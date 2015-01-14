@@ -1,21 +1,26 @@
 #include "world_queue.h"
 #include "actor.h"
 
+//default constructor
 WorldQueue::WorldQueue(){
+    size = 0;
     head = nullptr;
     tail = nullptr;
 }
 
+//destructor
 WorldQueue::~WorldQueue(){
     Clear();
 }
 
+//empties the queue
 void WorldQueue::Clear(){
     while (size > 0){
         PopFront();
     }
 }
 
+//returns and removes a pointer to the next Actor to be updated
 Actor* WorldQueue::PopFront(){
     Actor* toUpdate = nullptr;
 
@@ -43,6 +48,7 @@ Actor* WorldQueue::PopFront(){
     return toUpdate;
 }
 
+//inserts a pointer to an Actor to enter into the queue
 void WorldQueue::Insert(Actor &act){
     Node *toInsert = new Node(act);
 
@@ -75,6 +81,8 @@ void WorldQueue::Insert(Actor &act){
     return;
 }
 
+//removes the step time from each Actor in the queue
+//called automatically in PopFront
 void WorldQueue::StepTime(int &step){
     Node *Position = head;
 

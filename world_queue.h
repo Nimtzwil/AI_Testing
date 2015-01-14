@@ -3,6 +3,8 @@
 
 #include "actor.h"
 
+//generic node for doubly linked lists
+//class used in conjunction with WorldQueue
 class Node 
 {
 	friend class WorldQueue;
@@ -16,24 +18,27 @@ private:
 	Actor *payload;
 };
 
+//handles ordering of Actors via a priority queue
 class WorldQueue
 {
 public:
 	WorldQueue();
 	~WorldQueue();
-	
+
+//empties the queue
 	void Clear();
 
+//returns and removes a pointer to the next Actor to be updated
 	Actor* PopFront();
+//inserts a pointer to an Actor to enter into the queue
 	void Insert(Actor &act);
-	
+
+//removes the step time from each Actor in the queue
 	void StepTime(int &step);
 	
 private:
 	Node* head;
 	Node* tail;
     int size;
-	
-	// You can put helper methods here
 };
 #endif
