@@ -1,13 +1,14 @@
 #include "libtcod.hpp"
 #include "actor.h"
 
-Actor::Actor(int x, int y, int ch, const TCODColor &col, int typ, int health):
+Actor::Actor(int x, int y, int ch, const TCODColor &col, int typ, int health, int spd):
     x(x),y(y),ch(ch),col(col) {
 facing = 0;
 type = typ;
 hp = health;
 stinks = false;
-delay = 100;
+delay = 0;
+speed = spd;
 }
 
 Actor::~Actor(){

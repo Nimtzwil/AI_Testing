@@ -17,8 +17,9 @@ public:
 //determines if a scent path forms/stops
     bool stinks;
     int delay;
+    int speed;
 
-    Actor(int x, int y, int ch, const TCODColor &col, int typ, int health);
+    Actor(int x, int y, int ch, const TCODColor &col, int typ, int health, int spd);
     ~Actor();
     void render() const;
     void update();
