@@ -7,8 +7,8 @@ facing = 0;
 type = typ;
 hp = health;
 stinks = false;
-delay = 0;
 speed = spd;
+delay = spd;
 }
 
 Actor::~Actor(){
@@ -21,6 +21,13 @@ void Actor::render() const{
 }
 
 void Actor::update(){
-    x = x+1;
-	col = TCODColor::chartreuse;
+//Update depending on type
+//fire bat
+    if (type == 1){
+        x = x+1;
+    }
+//stone golem
+    else if (type == 2){
+        y = y+1;
+    }
 }

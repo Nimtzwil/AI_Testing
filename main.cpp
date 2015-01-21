@@ -164,14 +164,14 @@ void render(int & curX, int & curY, bool & hide, int & clock){
     }
 
     count = 0;
-    str = "Flip   - f";
+    str = "Fire   - f";
     for (char c: str){
         TCODConsole::root->setChar(62-1+count,16,c);
         TCODConsole::root->setCharForeground(62-1+count,16, TCODColor::chartreuse);
         count++;
     }
     count = 0;
-    str = "  Cell";
+    str = "  Bat";
     for (char c: str){
         TCODConsole::root->setChar(62-1+count,17,c);
         TCODConsole::root->setCharForeground(62-1+count,17, TCODColor::chartreuse);
@@ -179,14 +179,14 @@ void render(int & curX, int & curY, bool & hide, int & clock){
     }
 
     count = 0;
-    str = "Random - r";
+    str = "Stone  - s";
     for (char c: str){
         TCODConsole::root->setChar(62-1+count,20,c);
         TCODConsole::root->setCharForeground(62-1+count,20, TCODColor::chartreuse);
         count++;
     }
     count = 0;
-    str = " Fill";
+    str = "Golem";
     for (char c: str){
         TCODConsole::root->setChar(62-1+count,21,c);
         TCODConsole::root->setCharForeground(62-1+count,21, TCODColor::chartreuse);
@@ -194,14 +194,14 @@ void render(int & curX, int & curY, bool & hide, int & clock){
     }
 
     count = 0;
-    str = "Clear  - c";
+    str = "Step   - u";
     for (char c: str){
         TCODConsole::root->setChar(62-1+count,24,c);
         TCODConsole::root->setCharForeground(62-1+count,24, TCODColor::chartreuse);
         count++;
     }
     count = 0;
-    str = " Board";
+    str = "  Time";
     for (char c: str){
         TCODConsole::root->setChar(62-1+count,25,c);
         TCODConsole::root->setCharForeground(62-1+count,25, TCODColor::chartreuse);
@@ -209,14 +209,14 @@ void render(int & curX, int & curY, bool & hide, int & clock){
     }
 
     count = 0;
-    str = "Step   - s";
+    str = "####   - #";
     for (char c: str){
         TCODConsole::root->setChar(62-1+count,28,c);
         TCODConsole::root->setCharForeground(62-1+count,28, TCODColor::chartreuse);
         count++;
     }
     count = 0;
-    str = "  Time";
+    str = "  ####";
     for (char c: str){
         TCODConsole::root->setChar(62-1+count,29,c);
         TCODConsole::root->setCharForeground(62-1+count,29, TCODColor::chartreuse);
@@ -232,7 +232,7 @@ int main() {
     int cursorY = 0;
     TCODConsole::initRoot(width+12, height, "AI Testing", false);
     TCODRandom rnd = TCODRandom();
-    int rndVal = 0;
+//    int rndVal = 0;
     bool hidden = false;
     int time = 0;
 
@@ -269,19 +269,20 @@ int main() {
             case TCODK_CHAR :
 //TODO
                 if(key.c == 'f'){
-                    actors.push_front(new Actor(cursorX, cursorY, 25, TCODColor::red, 1, 1, 3));
+                    actors.push_front(new Actor(cursorX, cursorY, 102, TCODColor::red, 1, 1, 3));
                     queue.Insert(*actors.front());
                 }
 //TODO
                 else if(key.c == 's'){
-                    actors.push_front(new Actor(cursorX, cursorY, 25, TCODColor::blue, 1, 1, 6));
+                    actors.push_front(new Actor(cursorX, cursorY, 83, TCODColor::darkGrey, 2, 1, 6));
                     queue.Insert(*actors.front());
                 }
 //step time
                 else if(key.c == 'u'){
                     Actor* lamb = queue.PopFront();
-                    time = time + lamb->speed;
+                    time = time + lamb->delay;
                     lamb->delay = lamb->speed;
+                    lamb->update();
                     queue.Insert(*lamb);
                 }
 //hide cursor

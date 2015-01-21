@@ -89,6 +89,7 @@ void WorldQueue::StepTime(int &step){
     if ((step != 0)&&(size != 0)){
         while (Position != nullptr){
             Position->payload->delay = Position->payload->delay - step;
+			Position = Position->next;
         }
     }
 
