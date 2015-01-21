@@ -22,4 +22,5 @@ void Actor::render() const{
 
 void Actor::update(){
     x = x+1;
+	col = TCODColor::chartreuse;
 }

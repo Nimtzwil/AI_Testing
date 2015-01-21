@@ -27,12 +27,10 @@ public:
 
 //empties the queue
 	void Clear();
-
 //returns and removes a pointer to the next Actor to be updated
 	Actor* PopFront();
 //inserts a pointer to an Actor to enter into the queue
 	void Insert(Actor &act);
-
 //removes the step time from each Actor in the queue
 	void StepTime(int &step);
 	
